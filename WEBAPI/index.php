@@ -51,7 +51,8 @@ function register($name, $username, $email, $password){
 function Signin($email, $password){
     $conn = connect();
     $query = "SELECT * FROM users WHERE email='$email' AND password='$password'";
-    if(mysqli_query($conn, $query)){
+    $result = mysqli_query($conn, $query);
+    if($result){
         $rows = array();
         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
             $rows = $row;
