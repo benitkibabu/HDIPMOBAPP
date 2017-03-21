@@ -24,47 +24,47 @@ function connect(){
 }
 
 //closing the connection of the database
-function close(){
-    mysqli_close();
+function close($conn){
+    mysqli_close($conn);
 }
 
 //register a new user
 function register($name, $username, $email, $password){
     $conn = connect();
-    $query = "INSER INTO User(name, username, email, password) VALUES('$name', '$username', '$email', '$password')";
-    $result = mysqli_query( $conn, $query);
-    if($result && mysqli_num_rows($result) > 0){
-        $select = mysqli_query( $conn, "SELECT * FROM Users WHERE email = '$email'");
+    $query = "INSERT INTO users(name,username,email,password) VALUES('$name', '$username', '$email', '$password')";
+    if(mysqli_query($conn, $query)){
+        $select = mysqli_query( $conn, "SELECT * FROM users WHERE email ='$email'");
         $rows = array();
         while($row = mysqli_fetch_array($select, MYSQLI_ASSOC)){
-            $rows = row;
+            $rows = $row;
         }
-        
+        close( $conn);
         return $rows;
     }else{
+        close( $conn);
         return false;
     }
     
-    close();
 }
 
 //Sign user into their account
 function Signin($email, $password){
     $conn = connect();
-    $query = "SELECT * FROM Users WHERE email = '$email' AND password = '$password'";
-    $result = mysqli_query($conn, $query);
-    if($result && mysqli_num_rows($result) > 0){
+    $query = "SELECT * FROM users WHERE email='$email' AND password='$password'";
+    if(mysqli_query($conn, $query)){
         $rows = array();
         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-            $rows = row;
+            $rows = $row;
         }
+         close( $conn);
         
         return $rows;
     }else{
+         close( $conn);
         return false;
     }
     
-    close();
+   
 }
 
 if(isset($_POST['tag']) && $_POST['tag'] != ''){
@@ -102,10 +102,12 @@ else if(isset($_GET['tag']) && $_GET['tag'] != ''){
     
     $response = array("tag" => $tag, "error" => false);
     
-    $email  = $_GET['email'];
-	$password  = $_GET['password'];
+    
     
     if($tag == 'login'){
+        $email     = $_GET['email'];
+	    $password  = $_GET['password'];
+	    
         $do_login = Signin($email, $password);
         
         if($do_login != false){
