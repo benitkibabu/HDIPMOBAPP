@@ -85,6 +85,32 @@ public class DbHelper extends SQLiteOpenHelper {
         return u;
     }
 
+    public User getUser(){
+        User u = null;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT * FROM " + TBNAME;
+
+        Cursor c = db.rawQuery(query, null);
+
+        if(c!= null && c.getCount()>0 && c.moveToFirst()){
+            u = new User();
+            u.setId(c.getInt(c.getColumnIndex(TB_ID)));
+            u.setName(c.getString(c.getColumnIndex(TB_NAME)));
+            u.setUsername(c.getString(c.getColumnIndex(TB_UNAME)));
+            u.setEmail(c.getString(c.getColumnIndex(TB_UEMAIL)));
+            u.setPassword(c.getString(c.getColumnIndex(TB_UPASSWORD)));
+
+            db.close();
+        }else{
+            u = null;
+        }
+
+        db.close();
+        return u;
+    }
+
     public int removeUser(){
         SQLiteDatabase db = this.getWritableDatabase();
         int id = db.delete(TBNAME,null, null);
