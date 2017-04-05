@@ -67,6 +67,15 @@ public class LoginActivity extends AppCompatActivity {
                 login(e, p);
             }
         });
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
     }
 
     void login(final String email, final String password){
