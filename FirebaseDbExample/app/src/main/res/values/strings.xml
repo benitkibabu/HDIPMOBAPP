@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">FirebaseDbExample</string>
+    <string name="register">Register</string>
+    <string name="email_email_com">Email@email.com</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="loading">Loading...</string>
+</resources>

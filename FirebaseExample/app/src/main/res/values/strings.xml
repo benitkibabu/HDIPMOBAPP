@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Firebase Example</string>
+
+    <string name="new_message_notification_title_template">New message: %1$s</string>
+
+    <!-- TODO: remove this placeholder text -->
+    <string name="new_message_notification_placeholder_text_template">They posted - %1$s
+    </string>
+
+    <string name="action_share">Share</string>
+    <string name="action_reply">Reply</string>
+    <string name="failed_auth_signup">Failed to sign up</string>
+    <string name="failed_sign_in">Failed to sign in</string>
+    <string name="failed_profile_name_update">Failed to Update Profile Name!</string>
+    <string name="profile_name_updated">Profile Name is Updated!</string>
+</resources>
