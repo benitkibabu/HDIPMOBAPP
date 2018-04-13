@@ -125,7 +125,8 @@ public class RestaurantsActivity extends BaseActivity {
             }
         });
     }
-
+    
+    // Create a new restaurant item in the database if it not already added
     public void createRestaurant(final String name){
         boolean restaurantExist = false;
         showProgressDialog("Adding New Restaurant");
@@ -159,7 +160,8 @@ public class RestaurantsActivity extends BaseActivity {
             Toast.makeText(RestaurantsActivity.this, "Restaurant exist!", Toast.LENGTH_LONG).show();
         }
     }
-
+    
+    //Load all of the available restaurant from the database and add them to an arraylist
     private void loadRestaurantsList(){
         showProgressDialog("Loading all Restaurant");
         if(restaurantTable == null){
