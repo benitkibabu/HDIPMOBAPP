@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RetrofitExample</string>
+    <string name="action_settings">Settings</string>
+    <string name="api_key">ec2c9ac9ebcb96a1e5f7348fc3141be3</string>
+</resources>
